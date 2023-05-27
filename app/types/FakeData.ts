@@ -14,6 +14,7 @@ export interface Category {
 export interface Data {
   ref: string;
   info: {
+    id: string;
     type: string;
     images: {
       type: string;
