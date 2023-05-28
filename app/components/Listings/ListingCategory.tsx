@@ -1,4 +1,5 @@
 const ListingCategory = () => {
+  // Create custom hook here to catch the label's data.
   return (
     <div className="flex flex-col">
       <div className="flex flex-row items-center gap-4">
