@@ -15,7 +15,7 @@ const ListingInfo = ({ listing }: any) => {
         </div>
         <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
           {details.data.map((detail: any) => (
-            <div>{`${detail.type}: ${detail.value}`}</div>
+            <div key={detail.type + detail.value}>{`${detail.type}: ${detail.value}`}</div>
           ))}
         </div>
       </div>
