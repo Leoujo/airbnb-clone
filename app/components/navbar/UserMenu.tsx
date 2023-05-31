@@ -3,15 +3,17 @@ import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import { useCallback, useState } from "react";
 import MenuItem from "../MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModel";
 
 // border-neutral -> Almost white, border.
 const UserMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+	const registerModal = useRegisterModal()
+  	const [isOpen, setIsOpen] = useState(false);
 
-  // useCallback makes sure this function it's only triggered when it's called.
-  const toggleOpen = useCallback(() => {
-    setIsOpen((value) => !value);
-  }, []);
+	// useCallback makes sure this function it's only triggered when it's called.
+	const toggleOpen = useCallback(() => {
+		setIsOpen((value) => !value);
+	}, []);
 
   return (
     <div className="relative ">
@@ -38,7 +40,7 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem label="Login" />
-              <MenuItem label="Sign Up" />
+              <MenuItem label="Sign Up" onClick={registerModal.onOpen}/>
             </>
           </div>
         </div>
