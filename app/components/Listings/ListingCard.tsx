@@ -4,19 +4,34 @@ import Image from "next/image";
 import { useMemo } from "react";
 import HeartButton from "../HeartButton";
 import Link from "next/link";
+import { Listing, Reservation } from "@prisma/client";
+import { useRouter } from "next/navigation";
 
 interface ListingCardProps {
-  data: any;
+  data: Listing;
+  reservation?: Reservation;
   onAction?: (id: string) => void;
-  disabled?: string;
+  disabled?: boolean;
+  actionLabel?: string;
   actionId?: string;
+  currentUser?: any | null;
 }
 
 // col-span-1 -> grid column takes 1/12 space on the screen.
-const ListingCard: React.FC<ListingCardProps> = ({ data, onAction, disabled, actionId }) => {
-  const price = useMemo(() => {
-    return data.info.images.data.price;
-  }, [data]);
+const ListingCard: React.FC<ListingCardProps> = ({ 
+	data, 
+	reservation, 
+	onAction, 
+	disabled, 
+	actionLabel, 
+	actionId, 
+	currentUser
+ }) => {
+	const router = useRouter()
+	
+//   const price = useMemo(() => {
+//     return data.info.images.data.price;
+//   }, [data]);
 
   return (
     <Link href={`/listings/${data.info.id}`}>

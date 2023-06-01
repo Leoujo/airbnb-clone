@@ -4,6 +4,9 @@ import Navbar from "./components/navbar/Navbar";
 // import Modal from "./components/modals/Modal";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "./components/modals/LoginModal";
+import getCurrentUser from "./actions/getCurrentUser";
+import RentModal from "./components/modals/RentModal";
 
 export const metadata = {
   title: "Airbnb",
@@ -15,14 +18,17 @@ const font = Nunito({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	// We're getting server data without making api requests.
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={font.className}>
-        {/* <Modal actionLabel="Submit" title="Hello World" isOpen /> */}
         <ToasterProvider />
         <RegisterModal />
-        <Navbar />
+        <LoginModal />
+		  <RentModal />
+        <Navbar currentUser={currentUser} />
         <div>{children}</div>
       </body>
     </html>
