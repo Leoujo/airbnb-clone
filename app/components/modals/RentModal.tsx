@@ -6,9 +6,14 @@ import { useMemo, useState } from "react";
 import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
 import Counter from "../inputs/Counter";
+import ImageUpload from "../inputs/ImageUpload";
+import Input from "../inputs/Input";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 // Implementing steps
 enum STEPS {
@@ -21,9 +26,12 @@ enum STEPS {
 }
 
 const RentModal = () => {
+  const router = useRouter();
   const rentModal = useRentModal();
 
   const [step, setStep] = useState(STEPS.CATEGORY);
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -50,6 +58,7 @@ const RentModal = () => {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
   // This function forces the custom component to register in react hook form.
   // We're passing extra information so it reloads the page, like register would.
@@ -67,6 +76,29 @@ const RentModal = () => {
 
   const onNext = () => {
     setStep((value) => value + 1);
+  };
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    if (step !== STEPS.PRICE) {
+      return onNext();
+    }
+
+    setIsLoading(true);
+    axios
+      .post("/api/listings", data)
+      .then(() => {
+        toast.success("Listing Created!");
+        router.refresh();
+        reset();
+        setStep(STEPS.CATEGORY);
+        rentModal.onClose();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const actionLabel = useMemo(() => {
@@ -134,15 +166,10 @@ const RentModal = () => {
           value={guestCount}
           onChange={(value) => setCustomValue("guestCount", value)}
         />
-		  <hr />
-		  <Counter
-          title="Rooms"
-          subtitle="How many rooms do you allow?"
-          value={roomCount}
-          onChange={(value) => setCustomValue("roomCount", value)}
-        />
-		  <hr />
-		  <Counter
+        <hr />
+        <Counter title="Rooms" subtitle="How many rooms do you allow?" value={roomCount} onChange={(value) => setCustomValue("roomCount", value)} />
+        <hr />
+        <Counter
           title="Bathrooms"
           subtitle="How many bathrooms do you allow?"
           value={bathroomCount}
@@ -152,12 +179,41 @@ const RentModal = () => {
     );
   }
 
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title="Add a photo of your place" subtitle="Show guests what your place looks like!" />
+        <ImageUpload value={imageSrc} onChange={(value) => setCustomValue("imageSrc", value)} />
+      </div>
+    );
+  }
+
+  if (step === STEPS.DESCRIPTION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title="How would you describe your place?" subtitle="Short and sweet" />
+        <Input id="title" label="Title" disabled={isLoading} register={register} errors={errors} required />
+        <hr />
+        <Input id="description" label="Description" disabled={isLoading} register={register} errors={errors} required />
+      </div>
+    );
+  }
+
+  if (step === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap8">
+        <Heading title="Now, set your price" subtitle="How much do you charge per night?" />
+        <Input id="price" label="Price" formatPrice type="number" disabled={isLoading} register={register} errors={errors} required />
+      </div>
+    );
+  }
+
   return (
     <Modal
       title="Airbnb your home!"
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       // If I'm not on the first step, I can go back.
