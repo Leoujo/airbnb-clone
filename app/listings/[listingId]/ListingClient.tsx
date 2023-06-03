@@ -4,7 +4,6 @@ import Container from "@/app/components/Container";
 import ListingHead from "@/app/components/Listings/ListingHead";
 import ListingInfo from "@/app/components/Listings/ListingInfo";
 import { ListingReservation } from "@/app/components/Listings/ListingReservation";
-import { useMemo } from "react";
 
 const ListingClient = ({ listing }: any) => {
   return (

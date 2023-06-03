@@ -5,9 +5,12 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/Listings/ListingCard";
 import getListings from "./actions/getListings";
+import getCurrentUser from "./actions/getCurrentUser";
 
 export default async function Home() {
   const listings = await getListings();
+  //   const currentUser = await getCurrentUser();
+
   const isEmpty = listings.length === 0;
   if (isEmpty) {
     return <EmptyState showReset />;
@@ -16,7 +19,7 @@ export default async function Home() {
     <Container>
       <div
         className="
-			pt-24 
+			pt-12 
 			grid 
 			grid-cols-1 
 			sm:grid-cols-2 
@@ -27,7 +30,7 @@ export default async function Home() {
 			gap-8"
       >
         {listings.map((listing: any) => {
-          return <ListingCard data={listing} />;
+          return <ListingCard key={listing.id} data={listing} />;
         })}
       </div>
     </Container>
