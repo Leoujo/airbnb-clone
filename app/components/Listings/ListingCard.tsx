@@ -59,12 +59,11 @@ const ListingCard: React.FC<ListingCardProps> = ({ data, reservation, onAction, 
     const start = new Date(reservation.startDate);
     const end = new Date(reservation.endDate);
 
-    return `${format(start, "PP")} - ${format(end, "PP")}`;
+    return `${format(start, "PP")} - ${format(end, "PP")}`; 
   }, [reservation]);
 
-	//   onClick={() => router.push(`/listings/${data.id}`)}
   return (
-    <div className="col-span-1 cursor-pointer group">
+    <div onClick={() => router.push(`/listings/${data.id}`)} className="col-span-1 cursor-pointer group">
       <div className="flex flex-col gap-2 w-full">
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
           <Image fill alt="Listing" src={data.imageSrc} className="object-cover h-full w-full group-hover:scale-110 transition" />
@@ -81,7 +80,7 @@ const ListingCard: React.FC<ListingCardProps> = ({ data, reservation, onAction, 
         <div className="font-semibold">$ {data.price}</div>
         {!reservation && <div className="font-light">night</div>}
       </div>
-      {onAction && actionLabel && <Button disabled={disabled} small label={actionLabel} onClick={handleCancel}/>}
+      {onAction && actionLabel && <Button disabled={disabled} small label={actionLabel} onClick={handleCancel} />}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Image from "next/image";
 
 interface AvatarProps {
   image?: string | null;
+  src: any;
 }
 
 const Avatar: React.FC<AvatarProps> = ({ image }) => {
