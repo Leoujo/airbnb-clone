@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AirBNB clone 
 
-## Getting Started
+<div align="center">
+	<img src="./public/images/logo.png" />
+</div>
 
-First, run the development server:
+## Summary
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This is a clone of the famous Airbnb web app. My main goal here was practice my skills with Next, a cutting-edge technology built on top of React. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+- [Javascript ES2022](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Next](https://nextjs.org/) - Enables creating full-stack web applications by extending the laatest React features.
+- [npm](https://docs.npmjs.com/) - Package management.
+- [Tailwind](https://tailwindcss.com/) - CSS frameworl to compose and build any design.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Backend
 
-## Learn More
+- [Javascript ES2022](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Node](https://nodejs.org) - JavaScript runtime environment.
+- [MongoDB](https://www.mongodb.com/) - A noSQL database.
+- [Prisma](https://www.prisma.io/) - Next generation Node.js and TypeScript ORM.
 
-To learn more about Next.js, take a look at the following resources:
+## Contributor Roles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Leonardo Araujo](https://github.com/Leoujo) - Fullstack developer.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Documentation content
 
-## Deploy on Vercel
+- [Quick start](https://github.com/Leoujo/takestay/blob/develop/docs/quick_start.md)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+

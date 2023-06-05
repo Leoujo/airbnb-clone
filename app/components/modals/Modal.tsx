@@ -74,14 +74,14 @@ const Modal: React.FC<ModalProps> = ({ title, body, isOpen, onClose, onSubmit, f
         	<div 
 		  	className="
 				relative 
-				w-full 
+				sm:w-full 
+				md:max-w-lg 
 				md:w-4/6 
 				lg:w-3/6
 				xl:w-2/5 
 				my-6 
 				mx-auto 
 				h-full 
-				lg:h-auto 
 				md:h-auto"
 			>
          {/* CONTENT */}
