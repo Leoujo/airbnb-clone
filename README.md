@@ -30,7 +30,7 @@ This is a clone of the famous Airbnb web app. My primary objective in developing
 
 ## Documentation content
 
-- [Quick start](https://github.com/Leoujo/airbnb-clone/blob/dev/docs/quick_start.md)
+- [Quick start](https://github.com/Leoujo/airbnb-clone/blob/main/docs/quick_start.md)
 
 
 
