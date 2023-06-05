@@ -6,7 +6,7 @@
 
 ## Summary
 
-This is a clone of the famous Airbnb web app. My main goal here was practice my skills with Next, a cutting-edge technology built on top of React. 
+This is a clone of the famous Airbnb web app. My primary objective in developing this project was to enhance my skills with Next.js, a cutting-edge technology built on top of React.
 
 ## Project Stack
 
@@ -15,7 +15,7 @@ This is a clone of the famous Airbnb web app. My main goal here was practice my 
 - [Javascript ES2022](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Next](https://nextjs.org/) - Enables creating full-stack web applications by extending the laatest React features.
 - [npm](https://docs.npmjs.com/) - Package management.
-- [Tailwind](https://tailwindcss.com/) - CSS frameworl to compose and build any design.
+- [Tailwind](https://tailwindcss.com/) - CSS framework to compose and build any design.
 
 ### Backend
 
@@ -30,7 +30,7 @@ This is a clone of the famous Airbnb web app. My main goal here was practice my 
 
 ## Documentation content
 
-- [Quick start](https://github.com/Leoujo/takestay/blob/develop/docs/quick_start.md)
+- [Quick start](https://github.com/Leoujo/airbnb-clone/blob/dev/docs/quick_start.md)
 
 
 
