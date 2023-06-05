@@ -13,7 +13,7 @@ This is a clone of the famous Airbnb web app. My primary objective in developing
 ### Frontend
 
 - [Javascript ES2022](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Next](https://nextjs.org/) - Enables creating full-stack web applications by extending the laatest React features.
+- [Next](https://nextjs.org/) - Enables creating full-stack web applications by extending the latest React features.
 - [npm](https://docs.npmjs.com/) - Package management.
 - [Tailwind](https://tailwindcss.com/) - CSS framework to compose and build any design.
 
